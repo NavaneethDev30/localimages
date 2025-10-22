@@ -1,0 +1,9 @@
+gradio==3.44.0
+deepface==0.0.84
+Pillow==10.0.0
+tensorflow==2.16.0   # required by deepface
+keras==2.16.0        # required by deepface
+mtcnn==0.1.1         # optional, used by deepface for face detection
+opencv-python==4.8.1 # optional, improves deepface performance
+numpy==1.25.2        # required by deepface
+pandas==2.1.1        # required by deepface for results
