@@ -56,11 +56,11 @@ def recognize_and_describe(image):
         return f"❌ Error: {str(e)}"
 
     finally:
-        # Clean up the uploaded image
+        # Clean up uploaded image
         if os.path.exists("uploaded.jpg"):
             os.remove("uploaded.jpg")
 
-# Gradio UI setup
+# Gradio Interface
 demo = gr.Interface(
     fn=recognize_and_describe,
     inputs=gr.Image(type="pil", label="Upload an Image"),
@@ -70,4 +70,4 @@ demo = gr.Interface(
 )
 
 if __name__ == "__main__":
-    demo.launch(server_port=7861, share=False)
+    demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 10000)))
