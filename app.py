@@ -30,7 +30,7 @@ def save_image(image: Image.Image, path="uploaded.jpg"):
 # Recognition logic
 def recognize_and_describe(image: Image.Image):
     if image is None:
-        return "⚠️ Please provide an image."
+        return " Please provide an image."
 
     try:
         img_path = save_image(image)
@@ -47,20 +47,20 @@ def recognize_and_describe(image: Image.Image):
             matched_name = os.path.splitext(matched_filename)[0]
             key = normalize_name(matched_name)
             info = face_info.get(key, "📝 Info not available.")
-            return f"✅ Match found: {matched_name.replace('_', ' ').title()}\n\n🧠 Info: {info}"
+            return f"Match found: {matched_name.replace('_', ' ').title()}\n\n🧠 Info: {info}"
         else:
-            return "❌ No matching face found."
+            return " No matching face found."
 
     except Exception as e:
-        return f"❌ Error: {str(e)}"
+        return f" Error: {str(e)}"
 
     finally:
         if os.path.exists("uploaded.jpg"):
             os.remove("uploaded.jpg")
 
 # Streamlit UI
-st.set_page_config(page_title="🧠 Face Recognition App", layout="centered")
-st.title("🧠 Face Recognition App")
+st.set_page_config(page_title="Face Recognition App", layout="centered")
+st.title(" Face Recognition App")
 st.write("Upload a photo or use your webcam to identify a person and get related information.")
 
 # Image upload
@@ -79,6 +79,5 @@ if image_to_use is not None:
     if st.button("Recognize Face"):
         result = recognize_and_describe(image)
         st.text(result)
-# if __name__ == "__main__":
-#     demo.launch(server_name="127.0.0.1", server_port=7860)
+
 
